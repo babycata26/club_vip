@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es" class="age-verified app-ready"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="rating" content="adult">
+  <meta name="theme-color" content="#f6d9e7">
+  <meta property="og:locale" content="es_LA">
+  <meta property="og:type" content="website">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Niveles de suscripción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================
+   Suscripciones – estilos para replicar el diseño de referencia
+   Uso: agrega en el <head>, DESPUÉS de los demás CSS:
+   <link rel="stylesheet" href="suscripciones-estilos.css">
+   ========================================================== */
+
+:root {
+  --ink: #2b2433;
+  --muted: #6e6878;
+  --rose: #8f2b56;          /* precio y texto de botón */
+  --rose-line: #f0b3cb;     /* línea de tiempo y bordes */
+  --rose-soft: #fde8f0;     /* fondos suaves rosa */
+  --lilac-soft: #ece8fb;    /* insignias lila */
+  --lilac-ink: #5b4b9a;
+  --card-pink: #fff4f7;
+  --card-lilac: #fbf9ff;
+  --card-cream: #fffaf4;
+  --shadow: 0 6px 18px rgba(143, 43, 86, 0.08);
+  --radius: 18px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.is-hidden { display: none !important; }
+
+/* ---------- Contenedor general ---------- */
+.subscriptions-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+/* ---------- Navegación superior ---------- */
+.subscriptions-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.subscription-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.subscription-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rose-line);
+}
+
+.subscription-identity span { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.subscription-identity .verified { width: 16px; height: 16px; }
+.subscription-identity small { flex-basis: 100%; font-weight: 600; color: var(--muted); }
+
+.subscriptions-back {
+  color: var(--rose);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.subscriptions-back:hover { text-decoration: underline; }
+
+/* ---------- Título ---------- */
+.subscriptions-card h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section-description {
+  margin: 0 0 28px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Línea de tiempo ---------- */
+.tiers-grid {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  padding-left: 46px;
+}
+
+.tiers-grid::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  bottom: 0;
+  width: 2px;
+  background: var(--rose-line);
+  border-radius: 2px;
+}
+
+/* ---------- Tarjeta de nivel ---------- */
+.tier-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 28px;
+  padding: 20px 24px 22px;
+  border-radius: var(--radius);
+  background: #fff;
+  scroll-margin-top: 20px;
+}
+
+#tier-2 { background: var(--card-pink);  box-shadow: var(--shadow); }
+#tier-3 { background: var(--card-lilac); box-shadow: var(--shadow); }
+#tier-4 { background: var(--card-cream); box-shadow: var(--shadow); }
+
+/* Círculo numerado sobre la línea */
+.tier-step {
+  position: absolute;
+  left: -46px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--rose-line);
+  color: var(--rose);
+  font-size: 0.65rem;
+  font-weight: 800;
+  box-sizing: border-box;
+}
+
+/* ---------- Columna izquierda ---------- */
+.tier-summary { display: flex; flex-direction: column; align-items: stretch; }
+
+.tier-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tier-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.tier-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--rose-soft);
+  border: 1px solid var(--rose-line);
+  color: var(--rose);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+#tier-3 .tier-badge,
+#tier-4 .tier-badge {
+  background: var(--lilac-soft);
+  border-color: #cfc6f3;
+  color: var(--lilac-ink);
+}
+
+.tier-description {
+  margin: 10px 0 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.tier-price {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--rose);
+}
+
+/* Botón */
+.btn.btn-soft {
+  display: block;
+  margin-top: auto;
+  padding: 10px 16px;
+  border: 1.5px solid var(--rose-line);
+  border-radius: 999px;
+  background: var(--rose-soft);
+  color: var(--rose);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn.btn-soft:hover { background: #fbd5e4; transform: translateY(-1px); }
+
+/* ---------- Columna derecha ---------- */
+.tier-details { padding-top: 2px; }
+
+.tier-benefits-label {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* "Todo lo de estos niveles, incluido" + chips */
+.tier-includes { margin-bottom: 18px; }
+
+.tier-includes p {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.tier-includes a {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 3px 12px;
+  border: 1px solid var(--rose-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rose);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.tier-includes a:hover { background: var(--rose-soft); }
+
+/* Lista con checks */
+.tier-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.tier-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #4a4453;
+}
+
+.tier-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #c0668d;
+  font-weight: 800;
+}
+
+/* ---------- Nota inferior ---------- */
+.subscription-note {
+  margin: 26px 0 0;
+  padding: 12px 18px;
+  border: 1px solid #f3e3a8;
+  border-radius: 14px;
+  background: #fff9e0;
+  color: #6b5a1e;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.site-footer p { margin: 2px 0; font-weight: 700; }
+.site-footer small { opacity: 0.7; }
+
+/* ---------- Foco visible ---------- */
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 720px) {
+  .tier-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 18px 20px;
+  }
+  .tiers-grid { padding-left: 40px; }
+  .tiers-grid::before { left: 12px; }
+  .tier-step { left: -40px; width: 26px; height: 26px; }
+  .subscriptions-nav { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn.btn-soft { transition: none; }
+}
+
+  </style>
+</head>
+<body data-view="subscriptions">
+  <div class="age-gate is-hidden" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle" aria-hidden="true">
+    <section class="age-card">
+      <p class="pill">Acceso restringido</p>
+      <h2 id="ageGateTitle">Verificación de edad</h2>
+      <p>Este link hub contiene material NSFW y está restringido por edad. Al continuar, confirmas que cumples con la edad legal requerida en tu país.</p>
+      <div class="age-actions">
+        <button class="btn btn-primary" id="ageAcceptBtn" type="button">Soy adulto</button>
+        <button class="btn btn-ghost" id="ageDeclineBtn" type="button">Salir</button>
+      </div>
+      <p class="age-help" id="ageError" hidden="">No se pudo validar la edad. Intenta de nuevo.</p>
+    </section>
+  </div>
+
+  <main class="subscriptions-page app-shell" id="page" aria-hidden="false" itemscope="" itemtype="https://schema.org/CollectionPage">
+    <section class="subscriptions-card" id="subscriptionsRoot" aria-label="Niveles de suscripción"><h1 itemprop="name">Niveles de suscripción</h1><p class="section-description" itemprop="description">Elige el nivel que prefieras y recibe todo el contenido según tu suscripción.</p><div class="tiers-grid"><article class="tier-card" id="tier-1"><span class="tier-step" aria-hidden="true">01</span><div class="tier-summary"><div class="tier-header"><h3>Mini VIP</h3><span class="tier-badge">Lite</span></div><p class="tier-description">Pequeña ayuda a cambio de beneficios diarios. &lt;3</p><p class="tier-price">5 dólares el primer mes</p></div><div class="tier-details"><h4 class="tier-benefits-label">Tu primer nivel incluye</h4><ul class="tier-list"><li>Fotito diaria de buenas noches.</li><li>Cada viernes: videito nude o video masturbándome un poco antes de dormir, en tu privado.</li><li>Acceso a las versiones nude de mis TikToks y reels.</li></ul></div></article><article class="tier-card" id="tier-2"><span class="tier-step" aria-hidden="true">02</span><div class="tier-summary"><div class="tier-header"><h3>VIP</h3><span class="tier-badge">Popular</span></div><p class="tier-description">El nivel preferido por todos, suficiente para hacerte feliz un mesesito entero. &lt;3</p><p class="tier-price">15 dólares por mes</p></div><div class="tier-details"><div class="tier-includes"><p>Todo lo de estos niveles, incluido</p><a href="#tier-1">✓ Mini VIP</a></div><h4 class="tier-benefits-label">Y además, para ti</h4><ul class="tier-list"><li>Mis nudes (más de 150 fotos).</li><li>Videitos largos y cortos tocándome o haciendo cositas (más de 90 videos).</li><li>Videos con squirt.</li><li>Acceso a todo el contenido nuevo por lo que dure tu suscripción.</li><li>Acceso al contenido subido antes de suscribirte.</li><li>Acceso durante 7 días a cada grabación de directo, desde el momento en que se sube al perfil.</li></ul></div></article><article class="tier-card tier-card--highlight" id="tier-3"><span class="tier-step" aria-hidden="true">03</span><div class="tier-summary"><div class="tier-header"><h3>Super VIP</h3><span class="tier-badge">Más completo</span></div><p class="tier-description">Esta suscripción incluye beneficios extra y contenido semi personalizado. &lt;3</p><p class="tier-price">35 dólares por mes</p></div><div class="tier-details"><div class="tier-includes"><p>Todo lo de estos niveles, incluido</p><a href="#tier-1">✓ Mini VIP</a><a href="#tier-2">✓ VIP</a></div><h4 class="tier-benefits-label">Y además, para ti</h4><ul class="tier-list"><li>3 fotitos con tu nombre en un papelito: vagina, senitos y nalguitas.</li><li>1 video de un minutito acariciando mi vaginita para ti, con tu nombre en un papelito.</li><li>1 audio corto gimiendo, menciono tu nombre 1 vez y puedo agregar una frase linda o extra.</li><li>El SET semi personalizado se entrega una sola vez como agradecimiento por estar en este nivel.</li><li>El contenido semi personalizado se entrega en menos de 20 días.</li><li>Acceso a las grabaciones de mis nuevos directos que suba a mi perfil.</li></ul></div></article><article class="tier-card tier-card--highlight" id="tier-4"><span class="tier-step" aria-hidden="true">04</span><div class="tier-summary"><div class="tier-header"><h3>Favorite Daddy</h3><span class="tier-badge">Más personal</span></div><p class="tier-description">El nivel más personal, para tener todo mi contenido y beneficios pensados especialmente para ti. &lt;3</p><p class="tier-price">299 dólares por mes</p></div><div class="tier-details"><div class="tier-includes"><p>Todo lo de estos niveles, incluido</p><a href="#tier-1">✓ Mini VIP</a><a href="#tier-2">✓ VIP</a><a href="#tier-3">✓ Super VIP</a></div><h4 class="tier-benefits-label">Y además, para ti</h4><ul class="tier-list"><li>Agendamos 2 videollamadas al mes, de hasta 10 minutitos cada una.</li><li>Posibilidad de renovar el SET semi personalizado de Super VIP, pero completamente personalizado.</li></ul></div></article></div></section>
+  </main>
+
+
+</body></html>
